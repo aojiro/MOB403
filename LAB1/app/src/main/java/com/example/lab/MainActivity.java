@@ -31,5 +31,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, Lab1_Bai3_Activity.class);
         startActivity(intent);
     }
+    public void Bai4(View view) {
+        Intent intent = new Intent(MainActivity.this, Lab1_Bai4_Activity.class);
+        startActivity(intent);
+    }
 
 }
