@@ -62,7 +62,7 @@ public class Lab1_Bai2_EX2_Activity extends AppCompatActivity implements View.On
                 Message msg = messageHandler.obtainMessage();
                 Bundle bundle = new Bundle();
                 String threadMessage = "Thành Công Rồi Nè";
-                bundle.putString("message", threadMessage);
+                bundle.putString("Nội dung", threadMessage);
                 msg.setData(bundle);
                 messageHandler.sendMessage(msg);
             }

@@ -11,6 +11,7 @@ import android.window.SplashScreen;
 
 
 public class Lab1_Bai2_Activity extends Activity {
+    //time load
     private static int SPLASH_TIME_OUT = 3000;
     ImageView ImageView;
 
@@ -21,6 +22,9 @@ public class Lab1_Bai2_Activity extends Activity {
         ImageView img = (ImageView) findViewById(R.id.imgView);
         img.setImageResource(R.drawable.fpt);
 
+
+
+        //màn hình load
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
