@@ -12,10 +12,13 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="30dp"
+        android:fontFamily="serif-monospace"
+        android:textSize="25dp"
         android:text="BAI LAB2" />
 
     <Button
         android:id="@+id/btnBai1"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
