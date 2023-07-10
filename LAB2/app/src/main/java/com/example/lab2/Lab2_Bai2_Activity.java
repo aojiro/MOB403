@@ -21,7 +21,7 @@ public class Lab2_Bai2_Activity extends AppCompatActivity {
         edDai = (EditText) findViewById(R.id.edtChieuDai);
         edRong = (EditText) findViewById(R.id.edtChieuRong);
         tvResult = (TextView) findViewById(R.id.tvResult);
-        link = "http://192.168.146.90:8080/my-web/hinhchunhat_post.php";
+        link = "http://172.16.19.217:8080/my-web/hinhchunhat_post.php";
     }
 
     public void Loading(View view) {

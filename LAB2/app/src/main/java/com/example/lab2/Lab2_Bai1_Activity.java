@@ -21,7 +21,7 @@ public class Lab2_Bai1_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lab2_bai1);
-        link = "http://192.168.217.90:8080/my-web/student_GET.php";
+        link = "http://172.16.19.217:8080/my-web/student_GET.php";
 
         edtName = (EditText) findViewById(R.id.edName);
         edtScore = (EditText) findViewById(R.id.edScore);
