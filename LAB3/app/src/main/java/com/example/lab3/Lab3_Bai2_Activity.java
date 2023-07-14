@@ -26,11 +26,11 @@ public class Lab3_Bai2_Activity extends AppCompatActivity {
 
     // json object response url
     private String urlJsonObj =
-            "http://192.168.146.90/contacts/person_object.json";
+            "http://172.16.25.158:80/contacts/person_object.json";
 
     // json array response url
     private String urlJsonArry =
-            "http://192.168.146.90/contacts/person_array.json";
+            "http://172.16.25.158:80/contacts/person_array.json";
     private static String TAG = MainActivity.class.getSimpleName();
     private Button btnMakeObjectRequest, btnMakeArrayRequest;
 

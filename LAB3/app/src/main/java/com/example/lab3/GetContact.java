@@ -16,7 +16,7 @@ import java.util.List;
 public class GetContact extends AsyncTask<Void, Void, Void> {
 
     private static final String TAG = Lab3_Bai1_Activity.class.getSimpleName();
-    public static String url = "http://192.168.146.90/contacts/index.php";
+    public static String url = "http://172.16.25.158:80/contacts/index.php";
     ArrayList<Contact> contactList;
 
     private ProgressDialog pDialog;

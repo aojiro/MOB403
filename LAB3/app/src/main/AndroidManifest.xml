@@ -22,6 +22,7 @@
             android:exported="false" />
         <activity
             android:name=".Lab3_Bai3_Activity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".Lab3_Bai2_Activity"
