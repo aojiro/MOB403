@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/item1"
+            android:checked="true"
+            android:icon="@drawable/ic_favorite"
+            android:title="@string/title_1" />
+        <item
+            android:id="@+id/item2"
+            android:icon="@drawable/ic_favorite"
+            android:title="@string/title_2" />
+        <item
+            android:id="@+id/item3"
+            android:icon="@drawable/ic_favorite"
+            android:title="@string/title_3" />
+    </group>
+
+
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/subtitle"
+
+            android:title="Tài Khoản">
+            <menu>
+                <item
+                    android:id="@+id/item4"
+                    android:icon="@drawable/ic_manage_accounts"
+                    android:title="Chỉnh sửa thông tin" />
+                <item
+                    android:id="@+id/item5"
+                    android:icon="@drawable/ic_lock_reset"
+                    android:title="Quên mật khẩu" />
+
+                <item
+                    android:id="@+id/item6"
+                    android:icon="@drawable/ic_output"
+                    android:title="Đăng xuất" />
+            </menu>
+        </item>
+    </group>
+
+</menu>
