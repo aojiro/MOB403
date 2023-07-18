@@ -1,12 +1,9 @@
 <resources>
     <string name="app_name">Assignment</string>
-    <string name="title_1">Item 1</string>
-    <string name="title_2">Item 2</string>
-    <string name="title_3">Item 3</string>
+    <string name="title_1">Quản Lý Quyền</string>
     <string name="header_title">Header Title</string>
     <string name="header_text">Header Text</string>
     <string name="top_app_bar">Top App Bar</string>
-
 
 
 </resources>
