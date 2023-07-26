@@ -136,5 +136,5 @@ public class Fragment_Sign_Up extends Fragment {
         });
 
     }
-    private final String baseUrl = "https://tucaomypham.000webhostapp.com/android_networking_mob403/";
+    private final String baseUrl = "";
 }

@@ -159,5 +159,5 @@ public class Fragment_Login extends Fragment {
         }
     }
 
-    private final String baseUrl = "https://tucaomypham.000webhostapp.com/android_networking_mob403/";
+    private final String baseUrl = "";
 }
