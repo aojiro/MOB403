@@ -1,4 +1,4 @@
-package com.example.assignment.Fragment;
+package com.example.LAB4.Fragment;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -14,11 +14,9 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-
-import com.example.assignment.API_Server.ServerResponseMessageChangePassword;
-import com.example.assignment.Interface.AccountInterfaceAPI;
-import com.example.assignment.R;
-import com.example.assignment.URLServer.PathURLServer;
+import com.example.LAB4.APIServer.ServerResponseMessageChangePassword;
+import com.example.LAB4.Interface.AccountInterfaceAPI;
+import com.example.LAB4.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -147,7 +145,7 @@ public class Fragment_Information_Account extends Fragment {
 
     private void changePasswordRetrofit(int id, String new_password) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(PathURLServer.getBaseURL())
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         AccountInterfaceAPI accountInterfaceAPI = retrofit.create(AccountInterfaceAPI.class);
@@ -167,5 +165,5 @@ public class Fragment_Information_Account extends Fragment {
             }
         });
     }
-    
+    private final String baseUrl = "https://tucaomypham.000webhostapp.com/android_networking_mob403/";
 }
