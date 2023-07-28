@@ -1,0 +1,17 @@
+//build.gradle.kts
+
+
+implementation ("com.google.code.ksoap2-android:ksoap2-android:3.6.4")
+
+
+
+
+//settings.gradle.kts
+
+
+
+    repositories {
+        maven { url = uri("https://oss.sonatype.org/content/repositories/ksoap2-android-releases/") }
+        // Other repositories, if any
+    }
+
