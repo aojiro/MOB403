@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "594662197539",
+    "project_id": "android-poly-ee088",
+    "storage_bucket": "android-poly-ee088.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594662197539:android:b691c48ad1184791a92496",
+        "android_client_info": {
+          "package_name": "com.example.lab8"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "594662197539-0bsj13l94t99ji40bqoc67frv78bqvlm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZvPd4sQ5CBzi6SGUO9KZcfcaoLOzvSm4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "594662197539-0bsj13l94t99ji40bqoc67frv78bqvlm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

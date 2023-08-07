@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">Assignment</string>
-    <string name="title_1">Quản Lý Quyền</string>
-    <string name="header_title">Header Title</string>
-    <string name="header_text">Header Text</string>
-    <string name="top_app_bar">Top App Bar</string>
-
-
-</resources>
