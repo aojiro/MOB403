@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "594662197539",
-    "project_id": "android-poly-ee088",
-    "storage_bucket": "android-poly-ee088.appspot.com"
+    "project_number": "680144739239",
+    "project_id": "poly-deef0",
+    "storage_bucket": "poly-deef0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:594662197539:android:b691c48ad1184791a92496",
+        "mobilesdk_app_id": "1:680144739239:android:619b5b34fa1efc1c673482",
         "android_client_info": {
-          "package_name": "com.example.lab8"
+          "package_name": "mob403.ph27046.slide8"
         }
       },
       "oauth_client": [
         {
-          "client_id": "594662197539-0bsj13l94t99ji40bqoc67frv78bqvlm.apps.googleusercontent.com",
+          "client_id": "680144739239-g3jq6sl7bt7gdu6bm8jsg0qo2ljqt3et.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBZvPd4sQ5CBzi6SGUO9KZcfcaoLOzvSm4"
+          "current_key": "AIzaSyA1LzV06aroQKHSdq4nJoIyd-DbGv0Xm9s"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "594662197539-0bsj13l94t99ji40bqoc67frv78bqvlm.apps.googleusercontent.com",
+              "client_id": "680144739239-g3jq6sl7bt7gdu6bm8jsg0qo2ljqt3et.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
