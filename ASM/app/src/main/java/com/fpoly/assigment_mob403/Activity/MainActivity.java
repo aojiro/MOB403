@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void AddTabLayout() {
-        new TabLayoutMediator(binding.actiMainTab, binding.actiMainViewPg2, (tab, position) -> {
+        new TabLayoutMediator(binding.tabLayout, binding.viewPager, (tab, position) -> {
             if(position == 0){
                 tab.setIcon(R.drawable.auto_stories);
             }else
@@ -53,6 +53,6 @@ public class MainActivity extends AppCompatActivity {
     private void AddViewPager() {
         adapter_fragment = new AdapterFagment(this,
                 new Fragment[]{ReadStoryFragment.newInstance(), UserFragment.newInstance()});
-        binding.actiMainViewPg2.setAdapter(adapter_fragment);
+        binding.viewPager.setAdapter(adapter_fragment);
     }
 }

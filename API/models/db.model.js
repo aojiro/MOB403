@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const nameDB = "MOB403";
 mongoose
   .connect(
-    `mongodb+srv://Admin:admin@thangit.ky8asol.mongodb.net/${nameDB}?retryWrites=true&w=majority/`
+    `mongodb+srv://Admin:admin@thangit.ky8asol.mongodb.net/${nameDB}?retryWrites=true&w=majority`
 
   )
   .then(() => console.log("✅ Đã kết nối thành công đến mongodb."))

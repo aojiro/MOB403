@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.EditUser">
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/actiEditUser_btn_back"
@@ -15,103 +14,147 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:background="@drawable/baseline_reply_35"/>
-    <View
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
-        android:background="@color/black"/>
-    <androidx.appcompat.widget.LinearLayoutCompat
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="52dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center">
-        <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:gravity="center">
-            <androidx.appcompat.widget.AppCompatEditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="Tên đầy đủ"
-                android:id="@+id/actiEditUser_ed_fullName"
-                />
-            <androidx.appcompat.widget.AppCompatEditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint= "UserName"
-                android:id="@+id/actiEditUser_ed_userName"
-                />
-            <androidx.appcompat.widget.AppCompatEditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="Email"
-                android:id="@+id/actiEditUser_ed_email"
-                />
-            <androidx.appcompat.widget.AppCompatEditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="Avatar"
-                android:id="@+id/actiEditUser_ed_avatar"
-                />
-            <View
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:layout_width="match_parent"
-                android:background="@color/black"
-                android:layout_height="2dp"/>
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="Mật khẩu"
-                android:id="@+id/actiEditUser_ed_pass"
-                />
-            <androidx.appcompat.widget.AppCompatEditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="Mật khẩu mới"
-                android:id="@+id/actiEditUser_ed_newPass"
-                />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            android:padding="16dp">
 
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="180dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/corner_20dp_yellow"
-                android:id="@+id/actiEditUser_btn_edit"
-                android:text="Cập nhật"/>
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/actiEditUser_btn_editPass"
-                android:layout_width="180dp"
-                android:layout_height="50dp"
-                android:background="@drawable/corner_20dp_yellow"
-                android:layout_marginLeft="15dp"
-                android:text="Cập nhật mật khẩu"/>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <ProgressBar
-        android:visibility="invisible"
-        android:id="@+id/actiEditUser_pg_load"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="52dp"
-        android:background="#3EFFFFFF"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Chỉnh Sửa Thông Tin"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textStyle="bold" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Họ và Tên">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/actiEditUser_ed_fullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Tên đăng nhập">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/actiEditUser_ed_userName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/actiEditUser_ed_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Avatar">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/actiEditUser_ed_avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Mật khẩu cũ">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/actiEditUser_ed_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Mật khẩu mới">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/actiEditUser_ed_newPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/actiEditUser_btn_edit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:text="Cập nhật"
+                    android:textSize="10dp"
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/actiEditUser_btn_editPass"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:textSize="10dp"
+                    android:background="@color/colorPrimary"
+                    android:text="Cập nhật mật khẩu"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/actiEditUser_pg_load"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

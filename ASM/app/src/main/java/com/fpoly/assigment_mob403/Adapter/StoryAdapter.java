@@ -46,6 +46,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Story story = list.get(position);
         holder.tv_name.setText(story.getName());
+        holder.tv_desc.setText(GeneralFunc.ConvertToStringDate(story.getTimeRelease()));
         holder.btn.setOnClickListener(v -> event.OnClickItem(story.get_id()));
         GeneralFunc.LoadImageFromLink(story.getBackground(),holder.img_avatar);
     }
@@ -58,11 +59,12 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView img_avatar;
-        private TextView tv_name;
+        private TextView tv_name, tv_desc;
         private Button btn;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             img_avatar = itemView.findViewById(R.id.itemStory_img_avatar);
+            tv_desc = itemView.findViewById(R.id.tv_desc);
             tv_name = itemView.findViewById(R.id.itemStory_tv_name);
             btn = itemView.findViewById(R.id.itemStory_btn);
         }

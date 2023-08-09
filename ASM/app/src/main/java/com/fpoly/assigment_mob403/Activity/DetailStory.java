@@ -140,6 +140,7 @@ public class DetailStory extends AppCompatActivity {
     private void ActionOnClickDescribe(){
         binding.actiDetailStoryTvDescribe.setVisibility(View.VISIBLE);
         binding.actiDetailStoryRcImages.setVisibility(View.INVISIBLE);
+
         GeneralFunc.ChangeColorButton(binding.actiDetailStoryBtnDescribe,"#D9D9D9");
         GeneralFunc.ChangeColorButton(binding.actiDetailStoryBtnReadStory,"#FFFFFF");
     }

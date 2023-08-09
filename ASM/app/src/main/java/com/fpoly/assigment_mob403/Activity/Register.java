@@ -29,14 +29,7 @@ public class Register extends AppCompatActivity {
         setContentView(binding.getRoot());
     }
 
-    private void HandleShow(boolean isShow){
-        if(isShow){
-            binding.actiRegisterPgLoad.setVisibility(View.VISIBLE);
-        }else{
-            binding.actiRegisterPgLoad.setVisibility(View.INVISIBLE);
 
-        }
-    }
 
     public static boolean isValidEmail(String email) {
         String emailPattern = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
@@ -46,7 +39,7 @@ public class Register extends AppCompatActivity {
     public void ActionButtonRegister(View view) {
 
         try {
-            HandleShow(true);
+
 
             String fullName = binding.actiRegisterEdFullName.getText().toString().trim();
             String userName = binding.actiRegisterEdUserName.getText().toString().trim();
@@ -64,7 +57,7 @@ public class Register extends AppCompatActivity {
             }
 
             if(avatar.isEmpty()){
-                avatar = "https://st.nettruyenmax.com/data/comics/176/van-co-chi-ton.jpg";
+                avatar = "https://i.ytimg.com/vi/jz99vOgmzrM/hqdefault.jpg";
             }
 
             User user = new User(userName,password,email,fullName,avatar);
@@ -73,7 +66,7 @@ public class Register extends AppCompatActivity {
             call.enqueue(new Callback<Result>() {
                 @Override
                 public void onResponse(Call<Result> call, Response<Result> response) {
-                    HandleShow(false);
+
                     Result result = response.body();
                     Toast.makeText(Register.this, result.getMes(), Toast.LENGTH_SHORT).show();
                     if(result.isResult()){
@@ -84,14 +77,14 @@ public class Register extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<Result> call, Throwable t) {
-                    HandleShow(false);
+
 
                     Toast.makeText(Register.this, "Lỗi Internet!", Toast.LENGTH_SHORT).show();
                 }
             });
 
         }catch (Exception e){
-            HandleShow(false);
+
         }
     }
 

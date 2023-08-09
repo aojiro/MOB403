@@ -8,30 +8,32 @@
     android:gravity="center_horizontal"
     tools:context=".Activity.MainActivity">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="100dp">
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="100dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="TruyenOnl"
-            android:textStyle="bold"
-            android:textColor="#C3BB05"
-            android:textSize="20dp"
-            />
-        <com.google.android.material.tabs.TabLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:id="@+id/actiMain_tab"
-            android:background="#FFEB3B"/>
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/actiMain_viewPg2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="Truyện Online"
+                android:textSize="24sp"
+                android:shadowRadius="5"
+                app:titleTextColor="@android:color/white"
+                android:background="?attr/colorPrimary"/>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
 </LinearLayout>
