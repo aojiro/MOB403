@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fpoly.assigment_mob403.DTO.Story;
-import com.fpoly.assigment_mob403.DTO.User;
 import com.fpoly.assigment_mob403.GeneralFunc;
 import com.fpoly.assigment_mob403.R;
 
@@ -20,14 +19,14 @@ import java.util.List;
 
 public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
 
-    private List<User> list;
+    private List<Story> list;
     private EventItemStory event;
 
     public StoryAdapter(EventItemStory event){
         this.event = event;
     }
 
-    public void SetData(List<User> list){
+    public void SetData(List<Story> list){
         this.list = list;
         notifyDataSetChanged();
     }
@@ -45,10 +44,10 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        User user = list.get(position);
-        holder.tv_name.setText(user.getFullName());
-        holder.btn.setOnClickListener(v -> event.OnClickItem(user.get_id()));
-        GeneralFunc.LoadImageFromLink(user.getAvatar(),holder.img_avatar);
+        Story story = list.get(position);
+        holder.tv_name.setText(story.getName());
+        holder.btn.setOnClickListener(v -> event.OnClickItem(story.get_id()));
+        GeneralFunc.LoadImageFromLink(story.getBackground(),holder.img_avatar);
     }
 
     @Override

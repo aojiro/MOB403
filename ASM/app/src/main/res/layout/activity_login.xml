@@ -43,7 +43,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="LOGIN"
+                android:text="TruyenOnl"
                 android:textSize="30dp"
                 android:textStyle="bold"
                 android:textColor="#C3BB05"
@@ -59,7 +59,7 @@
             android:layout_marginLeft="30dp"
             android:textColor="@color/black"
             android:layout_marginTop="150dp"
-            android:text=""/>
+            android:text="Chào mừng đến với\nTruyenOnl"/>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"

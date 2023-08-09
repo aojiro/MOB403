@@ -13,27 +13,27 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface API_Comment {
-//    public static final String Router = "api/comment";
-//
-//    @GET(Router + ContainAPI.GetAll)
-//    Call<List<Comment>> GetAll();
-//
-//    @GET(Router + ContainAPI.GetElement)
-//    Call<Comment> GetElement(@Path("id") String id);
-//
-//    @GET(Router + "/getByStoryID/{id}")
-//    Call<List<Comment>> GetElementByStoryID(@Path("id") String id);
-//
-//    @POST(Router + ContainAPI.CreateElement)
-//    Call<Comment> CreateElement(@Body Comment comment);
-//
-//    @PUT(Router + ContainAPI.UpdateElement)
-//    Call<Comment> UpdateElement(@Path("id") String id);
-//
-//    @PUT(Router + ContainAPI.DeleteElement)
-//    Call<Comment> DeleteElement(@Path("id") String id);
-//
-//    @PUT(Router + ContainAPI.DeleteAll)
-//    Call<Comment> DeleteAll();
+    public static final String Router = "api/comment";
+
+    @GET(Router + ContainAPI.GetAll)
+    Call<List<Comment>> GetAll();
+
+    @GET(Router + ContainAPI.GetElement)
+    Call<Comment> GetElement(@Path("id") String id);
+
+    @GET(Router + "/getByStoryID/{id}")
+    Call<List<Comment>> GetElementByStoryID(@Path("id") String id);
+
+    @POST(Router + ContainAPI.CreateElement)
+    Call<Comment> CreateElement(@Body Comment comment);
+
+    @PUT(Router + ContainAPI.UpdateElement)
+    Call<Comment> UpdateElement(@Path("id") String id);
+
+    @PUT(Router + ContainAPI.DeleteElement)
+    Call<Comment> DeleteElement(@Path("id") String id);
+
+    @PUT(Router + ContainAPI.DeleteAll)
+    Call<Comment> DeleteAll();
 
 }
