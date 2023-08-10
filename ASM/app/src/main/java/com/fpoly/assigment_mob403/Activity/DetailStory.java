@@ -69,9 +69,9 @@ public class DetailStory extends AppCompatActivity {
 
     private void HandleShow(boolean isShow){
         if(isShow){
-            binding.actiDetailStoryPgLoad.setVisibility(View.VISIBLE);
+            binding.actiDetailStoryBtnEdit.setVisibility(View.VISIBLE);
         }else{
-            binding.actiDetailStoryPgLoad.setVisibility(View.INVISIBLE);
+            binding.actiDetailStoryBtnDel.setVisibility(View.INVISIBLE);
 
         }
     }
@@ -82,7 +82,7 @@ public class DetailStory extends AppCompatActivity {
         binding.actiDetailStoryTvName.setText(story.getName());
         binding.actiDetailStoryTvAuthor.setText(story.getAuthor());
         binding.actiDetailStoryTvTimeRelase.setText(GeneralFunc.ConvertToStringDate(story.getTimeRelease()));
-        binding.actiDetailStoryTvDescribe.setText(story.getDescribe());
+        binding.actiDetailStoryTvDescribeMini.setText(story.getDescribe());
         binding.actiDetailStoryRcImages.setLayoutManager(new LinearLayoutManager(this));
         StoryContentAdapter storyContentAdapter = new StoryContentAdapter();
         storyContentAdapter.SetData(story.getImages());
@@ -92,69 +92,52 @@ public class DetailStory extends AppCompatActivity {
         commentList = new ArrayList<>();
         messAdapter = new MessAdapter();
         messAdapter.SetData(commentList);
-        binding.actiDetailStoryRcMess.setLayoutManager(new LinearLayoutManager(this));
-        binding.actiDetailStoryRcMess.setAdapter(messAdapter);
+//        binding.actiDetailStoryRcMess.setLayoutManager(new LinearLayoutManager(this));
+//        binding.actiDetailStoryRcMess.setAdapter(messAdapter);
 
     }
 
     private void AddAction(){
-        binding.actiDetaiStoryBtnBack.setOnClickListener(v -> finish());
+//        binding.actiDetaiStoryBtnBack.setOnClickListener(v -> finish());
         binding.actiDetailStoryBtnReadStory.setOnClickListener(v -> ActionOnclickReadStory());
         binding.actiDetailStoryBtnDescribe.setOnClickListener(v -> ActionOnClickDescribe());
-        binding.actiDetailStoryBtnMess.setOnClickListener(v -> ActionOnClickMess());
-        binding.actiDetaiStoryBtnBackToNormal.setOnClickListener(v -> ActionOnClickBackToNormal());
-        binding.actiDetailStoryBtnSend.setOnClickListener(v -> ActionOnClickSend());
+//        binding.actiDetailStoryBtnMess.setOnClickListener(v -> ActionOnClickMess());
+//        binding.actiDetaiStoryBtnBackToNormal.setOnClickListener(v -> ActionOnClickBackToNormal());
+//        binding.actiDetailStoryBtnSend.setOnClickListener(v -> ActionOnClickSend());
     }
 
-    private void ActionOnClickSend() {
-        String text = binding.actiDetailStoryEdComment.getText().toString();
-        if(text.length() == 0) return;
-        Comment comment = new Comment();
-        comment.setStoryID(ValuesSave.CURRENT_ID_STORY);
-        comment.setUserID(ValuesSave.USER.get_id());
-        comment.setContent(text);
-        Call<Comment> call = ContainAPI.COMMENT().CreateElement(comment);
-        call.enqueue(new Callback<Comment>() {
-            @Override
-            public void onResponse(Call<Comment> call, Response<Comment> response) {
-                if(response.body() == null) return;
-                binding.actiDetailStoryEdComment.setText("");
-                commentList.add(response.body());
-                messAdapter.notifyItemInserted(commentList.size() - 1);
-            }
+    private void EditStoryOnClickSend() {
+        HandleShow(true);
+    }
 
-            @Override
-            public void onFailure(Call<Comment> call, Throwable t) {
-
-            }
-        });
+    private void DelStoryOnClickSend() {
     }
 
     private void ActionOnclickReadStory(){
         binding.actiDetailStoryRcImages.setVisibility(View.VISIBLE);
-        binding.actiDetailStoryTvDescribe.setVisibility(View.INVISIBLE);
+        binding.actiDetailStoryTvDescribeMini.setVisibility(View.INVISIBLE);
         GeneralFunc.ChangeColorButton(binding.actiDetailStoryBtnReadStory,"#D9D9D9");
         GeneralFunc.ChangeColorButton(binding.actiDetailStoryBtnDescribe,"#FFFFFF");
     }
 
     private void ActionOnClickDescribe(){
-        binding.actiDetailStoryTvDescribe.setVisibility(View.VISIBLE);
+        binding.actiDetailStoryTvDescribeMini.setVisibility(View.VISIBLE);
         binding.actiDetailStoryRcImages.setVisibility(View.INVISIBLE);
 
         GeneralFunc.ChangeColorButton(binding.actiDetailStoryBtnDescribe,"#D9D9D9");
         GeneralFunc.ChangeColorButton(binding.actiDetailStoryBtnReadStory,"#FFFFFF");
     }
 
-    private void ActionOnClickMess(){
-        binding.actiDetailStoryLayoutMess.setVisibility(View.VISIBLE);
-        binding.actiDetailStoryLayoutNormal.setVisibility(View.INVISIBLE);
-        LoadMess();
-    }
-
-    private void ActionOnClickBackToNormal(){
-        binding.actiDetailStoryLayoutMess.setVisibility(View.INVISIBLE);
-        binding.actiDetailStoryLayoutNormal.setVisibility(View.VISIBLE);
-    }
+//    private void ActionOnClickMess(){
+//        binding.actiDetailStoryLayoutMess.setVisibility(View.VISIBLE);
+//        binding.actiDetailStoryLayoutNormal.setVisibility(View.INVISIBLE);
+//        LoadMess();
+//    }
+//
+//    private void ActionOnClickBackToNormal(){
+//        binding.actiDetailStoryLayoutMess.setVisibility(View.INVISIBLE);
+//        binding.actiDetailStoryLayoutNormal.setVisibility(View.VISIBLE);
+//    }
 
     private void LoadMess(){
 
