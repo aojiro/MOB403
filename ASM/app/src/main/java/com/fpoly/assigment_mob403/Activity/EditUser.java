@@ -27,46 +27,43 @@ public class EditUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityEditUserBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        LoadData();
-        AddAction();
+        LoadData(); // Tải dữ liệu
+        AddAction(); // Thêm hành động
     }
 
     private void LoadData() {
-        binding.actiEditUserEdAvatar.setText(ValuesSave.USER.getAvatar());
-        binding.actiEditUserEdFullName.setText(ValuesSave.USER.getFullName());
-        binding.actiEditUserEdEmail.setText(ValuesSave.USER.getEmail());
-        binding.actiEditUserEdUserName.setText(ValuesSave.USER.getUsername());
+        binding.actiEditUserEdAvatar.setText(ValuesSave.USER.getAvatar()); // Đặt văn bản cho trường Avatar
+        binding.actiEditUserEdFullName.setText(ValuesSave.USER.getFullName()); // Đặt văn bản cho trường Tên đầy đủ
+        binding.actiEditUserEdEmail.setText(ValuesSave.USER.getEmail()); // Đặt văn bản cho trường Email
+        binding.actiEditUserEdUserName.setText(ValuesSave.USER.getUsername()); // Đặt văn bản cho trường Tên người dùng
     }
 
     private void AddAction(){
-        binding.actiEditUserBtnBack.setOnClickListener(v -> finish());
-        binding.actiEditUserBtnEdit.setOnClickListener(v -> ActionEditButton());
-        binding.actiEditUserBtnEditPass.setOnClickListener(v -> ActionEditPassButton());
+        binding.actiEditUserBtnBack.setOnClickListener(v -> finish()); // Đặt sự kiện kết thúc cho nút Quay lại
+        binding.actiEditUserBtnEdit.setOnClickListener(v -> ActionEditButton()); // Đặt sự kiện cho nút Chỉnh sửa
+        binding.actiEditUserBtnEditPass.setOnClickListener(v -> ActionEditPassButton()); // Đặt sự kiện cho nút Chỉnh sửa mật khẩu
     }
 
-
-
     private void ActionEditPassButton() {
-
-        HandleShow(true);
+        HandleShow(true); // Ẩn hiện tiến trình
 
         try {
-            String pass = binding.actiEditUserEdPass.getText().toString().trim();
-            String newPass = binding.actiEditUserEdNewPass.getText().toString().trim();
+            String pass = binding.actiEditUserEdPass.getText().toString().trim(); // Lấy mật khẩu hiện tại
+            String newPass = binding.actiEditUserEdNewPass.getText().toString().trim(); // Lấy mật khẩu mới
 
             if(pass.isEmpty() || newPass.isEmpty() ||!ValuesSave.USER.getPassword().equals(pass)){
-                Toast.makeText(this, "Thông tin không chính xác", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Thông tin không chính xác", Toast.LENGTH_SHORT).show(); // Hiển thị thông báo lỗi
                 HandleShow(false);
                 return;
             }
 
-            User user = ValuesSave.USER;
-            user.setPassword(newPass);
-            Call<User> call = ContainAPI.USER().UpdateElement(user.get_id(),user);
+            User user = ValuesSave.USER; // Lấy thông tin người dùng
+            user.setPassword(newPass); // Cập nhật mật khẩu mới
+            Call<User> call = ContainAPI.USER().UpdateElement(user.get_id(),user); // Gọi API cập nhật người dùng
             call.enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
-                    ValuesSave.USER = user;
+                    ValuesSave.USER = user; // Cập nhật thông tin người dùng
                     binding.actiEditUserEdPass.setText("");
                     binding.actiEditUserEdNewPass.setText("");
                     Toast.makeText(EditUser.this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
@@ -84,13 +81,11 @@ public class EditUser extends AppCompatActivity {
         }
     }
 
-
     private void HandleShow(boolean isShow){
         if(isShow){
-            binding.actiEditUserPgLoad.setVisibility(View.VISIBLE);
+            binding.actiEditUserPgLoad.setVisibility(View.VISIBLE); // Hiển thị tiến trình
         }else{
-            binding.actiEditUserPgLoad.setVisibility(View.INVISIBLE);
-
+            binding.actiEditUserPgLoad.setVisibility(View.INVISIBLE); // Ẩn tiến trình
         }
     }
     public static boolean isValidEmail(String email) {
@@ -99,7 +94,6 @@ public class EditUser extends AppCompatActivity {
     }
 
     private void ActionEditButton() {
-
         try {
             HandleShow(true);
             String fullName = binding.actiEditUserEdFullName.getText().toString().trim();
@@ -144,7 +138,6 @@ public class EditUser extends AppCompatActivity {
         }catch (Exception e){
             HandleShow(false);
         }
-
 
     }
 }

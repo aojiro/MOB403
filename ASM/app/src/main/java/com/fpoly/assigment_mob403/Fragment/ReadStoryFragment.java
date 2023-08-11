@@ -15,12 +15,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
+import com.fpoly.assigment_mob403.Activity.AddStory; // Thêm import này
 import com.fpoly.assigment_mob403.Activity.DetailStory;
 import com.fpoly.assigment_mob403.Adapter.StoryAdapter;
 import com.fpoly.assigment_mob403.ContainAPI;
 import com.fpoly.assigment_mob403.DTO.Story;
+import com.fpoly.assigment_mob403.R;
 import com.fpoly.assigment_mob403.databinding.FragmentReadStoryBinding;
 
 import java.text.Normalizer;
@@ -39,6 +42,8 @@ public class ReadStoryFragment extends Fragment implements StoryAdapter.EventIte
 
     private List<Story> curStoryList;
 
+    // Thêm biến cho button thêm truyện
+    private Button btnAddStory;
 
     private StoryAdapter itemStoryAdapter;
 
@@ -58,7 +63,6 @@ public class ReadStoryFragment extends Fragment implements StoryAdapter.EventIte
                              Bundle savedInstanceState) {
 
         binding = FragmentReadStoryBinding.inflate(inflater,container,false);
-
         return binding.getRoot();
     }
 
@@ -67,7 +71,6 @@ public class ReadStoryFragment extends Fragment implements StoryAdapter.EventIte
             binding.fragReadStoryPgLoad.setVisibility(View.VISIBLE);
         }else{
             binding.fragReadStoryPgLoad.setVisibility(View.INVISIBLE);
-
         }
     }
 
@@ -80,6 +83,17 @@ public class ReadStoryFragment extends Fragment implements StoryAdapter.EventIte
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         HandleRecycleStory();
+
+        // Ánh xạ button thêm truyện và gán sự kiện click
+        btnAddStory = binding.actiEditStoryBtnAdd;
+        btnAddStory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddStory.class);
+                startActivity(intent);
+            }
+        });
+
         AddAction();
     }
 
@@ -167,8 +181,6 @@ public class ReadStoryFragment extends Fragment implements StoryAdapter.EventIte
         }catch (Exception e){
             HandleShow(false);
         }
-
-
     }
 
     @Override

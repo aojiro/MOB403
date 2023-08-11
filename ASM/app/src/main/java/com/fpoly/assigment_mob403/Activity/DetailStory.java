@@ -68,12 +68,12 @@ public class DetailStory extends AppCompatActivity {
     }
 
     private void HandleShow(boolean isShow){
-        if(isShow){
-            binding.actiDetailStoryBtnEdit.setVisibility(View.VISIBLE);
-        }else{
-            binding.actiDetailStoryBtnDel.setVisibility(View.INVISIBLE);
 
-        }
+
+
+            binding.actiDetailStoryBtnDel.setVisibility(View.VISIBLE);
+
+
     }
 
     private void Init(){

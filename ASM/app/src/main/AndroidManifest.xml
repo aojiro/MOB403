@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.AddStory"
+            android:exported="false" />
+        <activity
             android:name=".Activity.EditStory"
             android:exported="false" />
         <activity

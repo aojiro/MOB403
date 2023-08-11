@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/actiEditUser_btn_back"
+        android:id="@+id/actiAddStory_btn_back"
         android:layout_width="35dp"
         android:layout_height="35dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Chỉnh Sửa Nội Dung"
+                android:text="Thêm Truyện"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textStyle="bold" />
 
@@ -43,7 +43,7 @@
                 android:hint="Tên">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/actiEditStory_ed_Name"
+                    android:id="@+id/actiAddStory_ed_Name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -59,7 +59,7 @@
                 android:hint="Nội dung">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/actiEditStory_ed_describe"
+                    android:id="@+id/actiAddStory_ed_describe"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -75,7 +75,7 @@
                 android:hint="Tác giả">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/actiEditStory_ed_author"
+                    android:id="@+id/actiAddStory_ed_author"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -89,7 +89,7 @@
                 android:hint="Thời gian">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/actiEditStory_time_input"
+                    android:id="@+id/actiAddStory_time_input"
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -104,28 +104,26 @@
                 android:hint="Background">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/actiEditStory_ed_Background"
+                    android:id="@+id/actiAddStory_ed_Background"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_layout"
-                android:layout_width="match_parent"
-                android:layout_marginTop="16dp"
-                android:layout_height="wrap_content">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/link_list"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Pic">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/actiAddStory_ed_Pic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/add_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Thêm link"/>
+
+
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -138,13 +136,13 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/actiEditStory_btn_edit"
+                    android:id="@+id/actiStory_btn_add"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:background="@color/colorPrimary"
-                    android:text="Cập nhật"
+                    android:text="Thêm"
                     android:textSize="10dp"
                     android:textColor="@android:color/white" />
 
@@ -153,7 +151,7 @@
             </LinearLayout>
 
             <ProgressBar
-                android:id="@+id/actiEditStory_pg_load"
+                android:id="@+id/actiAddStory_pg_load"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"/>
