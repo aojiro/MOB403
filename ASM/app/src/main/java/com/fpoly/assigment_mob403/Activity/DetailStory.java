@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.fpoly.assigment_mob403.Adapter.MessAdapter;
 import com.fpoly.assigment_mob403.Adapter.StoryContentAdapter;
@@ -21,8 +22,11 @@ import com.fpoly.assigment_mob403.ValuesSave;
 import com.fpoly.assigment_mob403.databinding.ActivityDetailStoryBinding;
 import com.fpoly.assigment_mob403.databinding.ActivityMainBinding;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +39,7 @@ public class DetailStory extends AppCompatActivity {
     private MessAdapter messAdapter;
 
     private Story story;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,7 @@ public class DetailStory extends AppCompatActivity {
         Call<Story> call = ContainAPI.STORY().GetElement(_id);
 
 
+
         call.enqueue(new Callback<Story>() {
             @Override
             public void onResponse(Call<Story> call, Response<Story> response) {
@@ -61,6 +67,7 @@ public class DetailStory extends AppCompatActivity {
             public void onFailure(Call<Story> call, Throwable t) {
 
             }
+
         });
 
 
@@ -82,6 +89,8 @@ public class DetailStory extends AppCompatActivity {
         binding.actiDetailStoryTvName.setText(story.getName());
         binding.actiDetailStoryTvAuthor.setText(story.getAuthor());
         binding.actiDetailStoryTvTimeRelase.setText(GeneralFunc.ConvertToStringDate(story.getTimeRelease()));
+        long timeInMillis = convertDateToMillis(GeneralFunc.ConvertToStringDate(story.getTimeRelease()));
+        binding.actiDetailStoryTvTimeRelase.setText(GeneralFunc.ConvertToStringDate(timeInMillis));
         binding.actiDetailStoryTvDescribeMini.setText(story.getDescribe());
         binding.actiDetailStoryRcImages.setLayoutManager(new LinearLayoutManager(this));
         StoryContentAdapter storyContentAdapter = new StoryContentAdapter();
@@ -92,25 +101,15 @@ public class DetailStory extends AppCompatActivity {
         commentList = new ArrayList<>();
         messAdapter = new MessAdapter();
         messAdapter.SetData(commentList);
-//        binding.actiDetailStoryRcMess.setLayoutManager(new LinearLayoutManager(this));
-//        binding.actiDetailStoryRcMess.setAdapter(messAdapter);
+
 
     }
 
-    private void AddAction(){
-//        binding.actiDetaiStoryBtnBack.setOnClickListener(v -> finish());
+    private void AddAction() {
+
+
         binding.actiDetailStoryBtnReadStory.setOnClickListener(v -> ActionOnclickReadStory());
         binding.actiDetailStoryBtnDescribe.setOnClickListener(v -> ActionOnClickDescribe());
-//        binding.actiDetailStoryBtnMess.setOnClickListener(v -> ActionOnClickMess());
-//        binding.actiDetaiStoryBtnBackToNormal.setOnClickListener(v -> ActionOnClickBackToNormal());
-//        binding.actiDetailStoryBtnSend.setOnClickListener(v -> ActionOnClickSend());
-    }
-
-    private void EditStoryOnClickSend() {
-        HandleShow(true);
-    }
-
-    private void DelStoryOnClickSend() {
     }
 
     private void ActionOnclickReadStory(){
@@ -128,56 +127,17 @@ public class DetailStory extends AppCompatActivity {
         GeneralFunc.ChangeColorButton(binding.actiDetailStoryBtnReadStory,"#FFFFFF");
     }
 
-//    private void ActionOnClickMess(){
-//        binding.actiDetailStoryLayoutMess.setVisibility(View.VISIBLE);
-//        binding.actiDetailStoryLayoutNormal.setVisibility(View.INVISIBLE);
-//        LoadMess();
-//    }
-//
-//    private void ActionOnClickBackToNormal(){
-//        binding.actiDetailStoryLayoutMess.setVisibility(View.INVISIBLE);
-//        binding.actiDetailStoryLayoutNormal.setVisibility(View.VISIBLE);
-//    }
 
-    private void LoadMess(){
-
+    private long convertDateToMillis(String date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         try {
-            HandleShow(true);
-            Call<List<Comment>> call = ContainAPI.COMMENT().GetElementByStoryID(ValuesSave.CURRENT_ID_STORY);
-            call.enqueue(new Callback<List<Comment>>() {
-                @Override
-                public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
-                    boolean check = false;
-
-                    if(response.body() == null){
-                        commentList = new ArrayList<>();
-                        messAdapter.SetData(commentList);
-                        return;
-                    }
-
-                    if(commentList.size() != response.body().size()) check = true;
-                    else{
-
-                    }
-
-                    if(check){
-                        commentList = response.body();
-                        messAdapter.SetData(commentList);
-                    }
-                    HandleShow(false);
-
-                }
-
-                @Override
-                public void onFailure(Call<List<Comment>> call, Throwable t) {
-                    HandleShow(false);
-
-                }
-            });
-        }catch (Exception e){
-            HandleShow(false);
+            Date dateObj = sdf.parse(date);
+            if (dateObj != null) {
+                return dateObj.getTime();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
+        return 0; // Hoặc giá trị mặc định khác nếu cần
     }
 }
