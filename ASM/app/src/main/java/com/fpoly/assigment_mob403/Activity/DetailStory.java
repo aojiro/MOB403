@@ -2,17 +2,13 @@ package com.fpoly.assigment_mob403.Activity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.fpoly.assigment_mob403.Adapter.MessAdapter;
 import com.fpoly.assigment_mob403.Adapter.StoryContentAdapter;
 import com.fpoly.assigment_mob403.ContainAPI;
 import com.fpoly.assigment_mob403.DTO.Comment;
@@ -22,7 +18,6 @@ import com.fpoly.assigment_mob403.GeneralFunc;
 import com.fpoly.assigment_mob403.R;
 import com.fpoly.assigment_mob403.ValuesSave;
 import com.fpoly.assigment_mob403.databinding.ActivityDetailStoryBinding;
-import com.fpoly.assigment_mob403.databinding.ActivityMainBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -38,7 +33,6 @@ public class DetailStory extends AppCompatActivity {
     private ActivityDetailStoryBinding binding;
 
     private List<Comment> commentList;
-    private MessAdapter messAdapter;
 
     private Story story;
 
@@ -99,10 +93,6 @@ public class DetailStory extends AppCompatActivity {
         storyContentAdapter.SetData(story.getImages());
         binding.actiDetailStoryRcImages.setAdapter(storyContentAdapter);
 
-        //mess
-        commentList = new ArrayList<>();
-        messAdapter = new MessAdapter();
-        messAdapter.SetData(commentList);
 
 
     }
