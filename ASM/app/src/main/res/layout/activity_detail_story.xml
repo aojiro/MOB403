@@ -144,10 +144,18 @@
 
             app:layout_constraintBottom_toBottomOf="parent">
 
+            <Button
+                android:id="@+id/actiDetailStory_btn_edit"
+                android:layout_width="wrap_content"
+                android:onClick="showEditDialog"
+                android:layout_height="wrap_content"
+                android:text="Chỉnh sửa"
+                android:layout_marginStart="8dp"/>
 
             <Button
                 android:id="@+id/actiDetailStory_btn_del"
                 android:layout_width="wrap_content"
+                android:onClick="showDeleteConfirmationDialog"
                 android:layout_height="wrap_content"
                 android:text="Xóa Truyện"
                 android:layout_marginStart="8dp"/>

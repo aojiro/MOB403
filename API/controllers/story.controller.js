@@ -50,11 +50,18 @@ const CreateElement = async (req, res, next) => {
 };
 const UpdateElement = async (req, res, next) => {
   try {
-    const story = await Story.findById(req.params.id);
-    await story.save({ $set: req.body });
-    res.json(story);
+    const storyId = req.params.id;
+    const updatedData = req.body;
+
+    const updatedStory = await Story.findByIdAndUpdate(storyId, updatedData, { new: true });
+
+    if (updatedStory) {
+      res.json(updatedStory);
+    } else {
+      res.json(false);
+    }
   } catch (error) {
-    res.json(false);
+    res.status(500).json({ error: 'Có lỗi xảy ra khi cập nhật thông tin truyện.' });
   }
 };
 const DeleteElement = async (req, res, next) => {
@@ -67,9 +74,10 @@ const DeleteElement = async (req, res, next) => {
       } catch (err) {}
     }
     await Story.findByIdAndDelete(story.id);
-    res.json(true);
+
+    res.json({ success: true }); // Trả về OBJECT với thuộc tính success là true
   } catch (error) {
-    res.json(false);
+    res.status(500).json({ success: false, message: "Xoá truyện thất bại" });
   }
 };
 const DeleteAll = async (req, res, next) => {
