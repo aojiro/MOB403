@@ -35,21 +35,24 @@ public class MainActivity extends AppCompatActivity {
         Init();
     }
 
-
+    // Khởi tạo giao diện
     private void Init() {
         AddViewPager();
         AddTabLayout();
     }
 
+    // Thêm TabLayout cho ViewPager
     private void AddTabLayout() {
         new TabLayoutMediator(binding.tabLayout, binding.viewPager, (tab, position) -> {
-            if(position == 0){
+            if (position == 0) {
                 tab.setIcon(R.drawable.auto_stories);
-            }else
+            } else {
                 tab.setIcon(R.drawable.account_circle);
+            }
         }).attach();
     }
 
+    // Thêm ViewPager và các Fragment cho nó
     private void AddViewPager() {
         adapter_fragment = new AdapterFagment(this,
                 new Fragment[]{ReadStoryFragment.newInstance(), UserFragment.newInstance()});

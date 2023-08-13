@@ -19,7 +19,7 @@ public class ContainAPI {
     public static final String DeleteAll = "/delete";
 
     // Địa chỉ URL của API
-    public static final String URL = "http://192.168.1.2:9000/";
+    public static final String URL = "http://192.168.1.6:9000/";
 
     // Khai báo các đối tượng API
     private static API_Comment API_COMMENT;

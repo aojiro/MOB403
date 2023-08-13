@@ -62,14 +62,18 @@ public class AddStory extends AppCompatActivity {
 
     private void HandleShow(boolean isShow) {
         if (isShow) {
-            pgLoad.setVisibility(View.VISIBLE);
+            pgLoad.setVisibility(View.VISIBLE); // Hiển thị thanh tiến trình
         } else {
-            pgLoad.setVisibility(View.GONE);
+            pgLoad.setVisibility(View.GONE);    // Ẩn thanh tiến trình
         }
     }
 
+
     private void addStory() {
+        // Hiển thị trạng thái xử lý
         HandleShow(true);
+
+        // Lấy thông tin từ các trường nhập
         String name = edName.getText().toString().trim();
         String describe = edDescribe.getText().toString().trim();
         String author = edAuthor.getText().toString().trim();
@@ -77,8 +81,10 @@ public class AddStory extends AppCompatActivity {
         String pic = edPic.getText().toString().trim();
         String date = edDate.getText().toString().trim();
 
+        // Kiểm tra xem có thông tin nào bị bỏ trống không
         if (name.isEmpty() || describe.isEmpty() || author.isEmpty() || background.isEmpty() || pic.isEmpty() || date.isEmpty()) {
             Toast.makeText(this, "Vui lòng điền đầy đủ thông tin truyện", Toast.LENGTH_SHORT).show();
+            // Ẩn trạng thái xử lý
             HandleShow(false);
             return;
         }
@@ -86,12 +92,14 @@ public class AddStory extends AppCompatActivity {
         // Chuyển đổi ngày từ chuỗi sang giá trị thời gian dạng long
         long timeRelease = convertDateToMillis(date);
 
+        // Tạo đối tượng Story mới
         Story newStory = new Story();
         newStory.setName(name);
         newStory.setDescribe(describe);
         newStory.setAuthor(author);
         newStory.setBackground(background);
 
+        // Tạo danh sách hình ảnh từ chuỗi và loại bỏ khoảng trắng
         List<String> images = new ArrayList<>();
         String[] picUrls = pic.split("\n");
         for (String imageUrl : picUrls) {
@@ -103,15 +111,18 @@ public class AddStory extends AppCompatActivity {
 
         newStory.setTimeRelease((int) timeRelease);
 
+        // Gọi API để tạo truyện mới
         Call<Story> call = ContainAPI.STORY().CreateElement(newStory);
         call.enqueue(new Callback<Story>() {
             @Override
             public void onResponse(Call<Story> call, Response<Story> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(AddStory.this, "Thêm truyện thành công", Toast.LENGTH_SHORT).show();
+                    // Ẩn trạng thái xử lý
                     HandleShow(false);
                 } else {
                     Toast.makeText(AddStory.this, "Thêm truyện thất bại", Toast.LENGTH_SHORT).show();
+                    // Ẩn trạng thái xử lý
                     HandleShow(false);
                 }
             }
@@ -119,6 +130,7 @@ public class AddStory extends AppCompatActivity {
             @Override
             public void onFailure(Call<Story> call, Throwable t) {
                 Toast.makeText(AddStory.this, "Thêm truyện thất bại", Toast.LENGTH_SHORT).show();
+                // Ẩn trạng thái xử lý
                 HandleShow(false);
             }
         });
@@ -130,11 +142,13 @@ public class AddStory extends AppCompatActivity {
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
+        // Hiển thị hộp thoại chọn ngày
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 AddStory.this,
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        // Định dạng ngày tháng và hiển thị trong trường nhập liệu
                         String selectedDate = String.format(Locale.getDefault(),
                                 "%02d/%02d/%d",
                                 dayOfMonth, monthOfYear + 1, year);
@@ -147,6 +161,7 @@ public class AddStory extends AppCompatActivity {
         datePickerDialog.show();
     }
 
+    // Chuyển đổi chuỗi ngày sang giá trị thời gian dạng milliseconds
     private long convertDateToMillis(String date) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         try {
@@ -158,5 +173,10 @@ public class AddStory extends AppCompatActivity {
             e.printStackTrace();
         }
         return 0; // Hoặc giá trị mặc định khác nếu cần
+    }
+
+
+    public void ActionButtonBack(View view) {
+        finish();
     }
 }

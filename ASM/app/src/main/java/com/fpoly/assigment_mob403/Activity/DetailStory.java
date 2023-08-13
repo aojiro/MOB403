@@ -43,45 +43,45 @@ public class DetailStory extends AppCompatActivity {
         binding = ActivityDetailStoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        HandleShow(true);
+        // Hiển thị các phần tử giao diện
+//        HandleShow(true);
 
         String _id = getIntent().getStringExtra(ReadStoryFragment.KEYBUNDLE);
 
+        // Gọi API để lấy thông tin truyện dựa trên _id
         Call<Story> call = ContainAPI.STORY().GetElement(_id);
 
-
-
+        // Gửi yêu cầu bất đồng bộ và xử lý kết quả
         call.enqueue(new Callback<Story>() {
             @Override
             public void onResponse(Call<Story> call, Response<Story> response) {
                 story = response.body();
+                // Khởi tạo giao diện với thông tin truyện
+//                HandleShow(true);
                 Init();
-                HandleShow(false);
+                // Ẩn các phần tử giao diện
+
             }
 
             @Override
             public void onFailure(Call<Story> call, Throwable t) {
-
+                // Xử lý khi gọi API thất bại
             }
-
         });
 
-
+        // Thêm các hành động vào giao diện
         AddAction();
     }
 
-    private void HandleShow(boolean isShow){
+    // Hiển thị hoặc ẩn phần tử giao diện
+//    private void HandleShow(boolean isShow) {
+//
+//    }
 
-
-
-            binding.actiDetailStoryBtnDel.setVisibility(View.VISIBLE);
-
-
-    }
-
-    private void Init(){
+    // Khởi tạo giao diện với thông tin truyện
+    private void Init() {
         ValuesSave.CURRENT_ID_STORY = story.get_id();
-        GeneralFunc.LoadImageFromLink(story.getBackground(),binding.actiDetailStoryImgAvatar);
+        GeneralFunc.LoadImageFromLink(story.getBackground(), binding.actiDetailStoryImgAvatar);
         binding.actiDetailStoryTvName.setText(story.getName());
         binding.actiDetailStoryTvAuthor.setText(story.getAuthor());
         binding.actiDetailStoryTvTimeRelase.setText(GeneralFunc.ConvertToStringDate(story.getTimeRelease()));
@@ -92,32 +92,30 @@ public class DetailStory extends AppCompatActivity {
         StoryContentAdapter storyContentAdapter = new StoryContentAdapter();
         storyContentAdapter.SetData(story.getImages());
         binding.actiDetailStoryRcImages.setAdapter(storyContentAdapter);
-
-
-
     }
 
+    // Thêm các hành động vào giao diện
     private void AddAction() {
-
-
         binding.actiDetailStoryBtnReadStory.setOnClickListener(v -> ActionOnclickReadStory());
         binding.actiDetailStoryBtnDescribe.setOnClickListener(v -> ActionOnClickDescribe());
     }
 
-    private void ActionOnclickReadStory(){
+    // Xử lý khi nhấn nút "Đọc truyện"
+    private void ActionOnclickReadStory() {
         binding.actiDetailStoryRcImages.setVisibility(View.VISIBLE);
         binding.actiDetailStoryTvDescribeMini.setVisibility(View.INVISIBLE);
-        GeneralFunc.ChangeColorButton(binding.actiDetailStoryBtnReadStory,"#D9D9D9");
-        GeneralFunc.ChangeColorButton(binding.actiDetailStoryBtnDescribe,"#FFFFFF");
+        GeneralFunc.ChangeColorButton(binding.actiDetailStoryBtnReadStory, "#D9D9D9");
+        GeneralFunc.ChangeColorButton(binding.actiDetailStoryBtnDescribe, "#FFFFFF");
     }
 
-    private void ActionOnClickDescribe(){
+    // Xử lý khi nhấn nút "Mô tả"
+    private void ActionOnClickDescribe() {
         binding.actiDetailStoryTvDescribeMini.setVisibility(View.VISIBLE);
         binding.actiDetailStoryRcImages.setVisibility(View.INVISIBLE);
-
-        GeneralFunc.ChangeColorButton(binding.actiDetailStoryBtnDescribe,"#D9D9D9");
-        GeneralFunc.ChangeColorButton(binding.actiDetailStoryBtnReadStory,"#FFFFFF");
+        GeneralFunc.ChangeColorButton(binding.actiDetailStoryBtnDescribe, "#D9D9D9");
+        GeneralFunc.ChangeColorButton(binding.actiDetailStoryBtnReadStory, "#FFFFFF");
     }
+
 
 
     private long convertDateToMillis(String date) {
@@ -185,6 +183,7 @@ public class DetailStory extends AppCompatActivity {
         View editView = getLayoutInflater().inflate(R.layout.edit_story_dialog, null);
         EditText edtName = editView.findViewById(R.id.actiAddStory_edit_story_name);
         EditText edtAuthor = editView.findViewById(R.id.actiAddStory_edit_story_author);
+//        EditText edtBackground = editView.findViewById(R.id.actiAddStory_edit_story_background);
 
         // ... Thêm các trường dữ liệu cần chỉnh sửa ...
 
@@ -195,6 +194,7 @@ public class DetailStory extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 String newName = edtName.getText().toString();
                 String newAuthor = edtAuthor.getText().toString();
+//                String newBackground = edtBackground.getText().toString();
                 // ... Lấy thông tin cập nhật từ các trường khác ...
 
                 UpdateStory(story.get_id(), newName, newAuthor);
@@ -234,5 +234,7 @@ public class DetailStory extends AppCompatActivity {
             }
         });
     }
-
+    public void ActionButtonBack(View view) {
+        finish();
+    }
 }
