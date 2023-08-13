@@ -195,6 +195,7 @@ public class DetailStory extends AppCompatActivity {
         View editView = getLayoutInflater().inflate(R.layout.edit_story_dialog, null);
         EditText edtName = editView.findViewById(R.id.actiAddStory_edit_story_name);
         EditText edtAuthor = editView.findViewById(R.id.actiAddStory_edit_story_author);
+
         // ... Thêm các trường dữ liệu cần chỉnh sửa ...
 
         builder.setView(editView);

@@ -22,20 +22,21 @@ import java.util.concurrent.Future;
 public class GeneralFunc {
 
     private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+    // Tải hình ảnh từ đường dẫn
     public static Bitmap LoadImageFromLink(String link){
         Bitmap bitmap = null;
         URL mUrl;
         try {
             mUrl = new URL(link);
-
             bitmap = BitmapFactory.decodeStream(mUrl.openConnection().getInputStream());
-
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return bitmap;
     }
 
+    // Tải hình ảnh từ đường dẫn và hiển thị lên ImageView trong một luồng riêng biệt
     public static void LoadImageFromLink(String link, ImageView _img_anh1){
         Runnable newRunalbe = new Runnable() {
             @Override
@@ -54,11 +55,11 @@ public class GeneralFunc {
         newThread.start();
     }
 
+    // Tải nhiều hình ảnh từ danh sách các đường dẫn
     public static List<Bitmap> LoadImageFuture(List<String> links){
         List<Bitmap> bitmaps = new ArrayList<>();
         ExecutorService executorService = Executors.newFixedThreadPool(links.size());
         for(String url : links){
-
             try {
                 Callable<Bitmap> callable = new Callable() {
                     @Override
@@ -71,22 +72,25 @@ public class GeneralFunc {
                 if(future.get() != null){
                     bitmaps.add(future.get());
                 }
-            }catch (Exception e){
-
+            } catch (Exception e) {
+                // Xử lý ngoại lệ
             }
         }
 
         return bitmaps;
     }
 
+    // Chuyển đổi millisecond thành chuỗi ngày
     public static String ConvertToStringDate(long milli){
         return sdf.format(new Date(milli));
     }
 
+    // Chuyển đổi Date thành chuỗi ngày
     public static String ConvertToDateString(Date date){
         return sdf.format(date);
     }
 
+    // Chuyển đổi chuỗi ngày thành millisecond
     public static long ConvertStringDateToMillisecond(String StringDate){
         long milliseconds = 0;
         try {
@@ -98,6 +102,7 @@ public class GeneralFunc {
         return milliseconds;
     }
 
+    // Chuyển đổi chuỗi ngày thành đối tượng Date
     public static Date ConvertStringDateToDate(String StringDate){
         Date date1 = new Date();
         try {
@@ -108,8 +113,9 @@ public class GeneralFunc {
         return date1;
     }
 
+    // Thay đổi màu nền của nút
     public static void ChangeColorButton(Button btn,String colorCode){
         btn.setBackgroundColor(Color.parseColor(colorCode));
     }
-
 }
+
